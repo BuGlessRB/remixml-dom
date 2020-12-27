@@ -1,9 +1,4 @@
-   /** @license
-   ** remixml-dom v4.0.0: Render to DOM
-  ** Copyright (c) 2018-2021 by Stephen R. van den Berg <srb@cuci.nl>
- ** License: ISC OR GPL-3.0
-** Sponsored by: Cubic Circle, The Netherlands
-*/
+/** @license Copyright (c) 2018-2021 by Stephen R. van den Berg <srb@cuci.nl> */
 
 /** @define {number} */ var DEBUG = 1;
 /** @define {number} */ var ALERTS = 0;
