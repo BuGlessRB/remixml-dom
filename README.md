@@ -6,7 +6,9 @@
 
 Remixml component that renders directly to the DOM in browsers.
 
-Uses the regular Javascript DOM-API.
+Uses the regular Javascript DOM-API and therefore is not limited by the
+pseudo-smart parsing rules that the browser HTML parser imposes, i.e.
+it allows the creation of arbitrary DOM structures.
 
 ## Requirements
 
