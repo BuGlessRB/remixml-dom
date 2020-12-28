@@ -12,7 +12,7 @@ it allows the creation of arbitrary DOM structures.
 
 ## Requirements
 
-It runs inside any webbrowser or NodeJS environment.
+It runs inside any webbrowser environment.
 
 ## Reference documentation
 
