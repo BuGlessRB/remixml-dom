@@ -75,12 +75,22 @@
     return parent;
   }
 
+  function /** !Object */ factory(/** !Object */ rxml)
+  { O.assign(rxml, g);
+    return g;
+  }
+
+  const /** string */ rxs = "remixml";
+
   if (typeof define == "function" && define["amd"])
-    define("remixml-dom", g);
+    define("remixml-dom", [rxs], factory);
   else if (typeof exports == "object")
-    O.assign(/** @type{!Object} */(exports), g);
-  else
-    window["RemixmlDOM"] = g;
+    O.assign(/** @type{!Object} */(exports),
+     factory(require(rxs)));
+  else {
+    var W = window;
+    W["RemixmlDOM"] = factory(W["Remixml"]);
+  }
 
 // Cut BEGIN delete
 }).call(this);
