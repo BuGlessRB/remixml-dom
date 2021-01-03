@@ -52,6 +52,8 @@
     switch (name)
     { case "!":
         return D.createComment(vdom[0]);
+      case "?":
+        return D.createComment("?" + vdom[0]);
       case 1:
         parent = D.createDocumentFragment();
         break;
