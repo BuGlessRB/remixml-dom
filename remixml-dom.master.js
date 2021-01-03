@@ -44,6 +44,10 @@
   { return D.createElement(n);
   }
 
+  function /** !Node */ newcm(/** string */ n)
+  { return D.createComment(n);
+  }
+
   const /** !Node */ txta = newel("textarea");
 
   function /** !Node */ abstract2dom(/** !Array */ vdom)
@@ -51,9 +55,9 @@
     var /** string|number */ name = /** @type{Object} */(vdom)[""];
     switch (name)
     { case "!":
-        return D.createComment(vdom[0]);
+        return newcm(vdom[0]);
       case "?":
-        return D.createComment("?" + vdom[0]);
+        return newcm("?" + vdom[0]);
       case 1:
         parent = D.createDocumentFragment();
         break;
