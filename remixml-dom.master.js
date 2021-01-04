@@ -56,8 +56,9 @@
     switch (name)
     { case "!":
         return newcm(vdom[0]);
+      case "<":
       case "?":
-        return newcm("?" + vdom[0]);
+        return newcm(name + vdom[0]);
       case 1:
         parent = D.createDocumentFragment();
         break;
