@@ -77,7 +77,7 @@
     var /** number */ i = 0;
     while ((child = vdom[i++]) !== undefined)
       parent.appendChild(child[""] ? abstract2dom(child)
-       : child.indexOf("&") < 0 ? D.createTextNode(child)
+       : !child.indexOf || child.indexOf("&") < 0 ? D.createTextNode(child)
        : (txta.innerHTML = child, txta.firstChild));
     return parent;
   }
