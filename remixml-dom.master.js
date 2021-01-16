@@ -23,7 +23,7 @@
   const O = Object;
   const D = document;
 
-  var g =
+  const /** !Object */ g =
   { "abstract2dom": 
       function /** !Node */(/** !Array */ tpl, /** !Node= */ node)
       { var /** !Node */ newnodes = abstract2dom(tpl);
