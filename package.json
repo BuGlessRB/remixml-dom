@@ -1,6 +1,6 @@
 {
   "name": "remixml-dom",
-  "version": "4.0.11",
+  "version": "4.1.0",
   "description": "Remixml component that renders to DOM in browsers",
   "browser": "remixml-dom.min.js",
   "scripts": {

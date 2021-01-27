@@ -22,6 +22,9 @@
 
   const O = Object;
   const D = document;
+  const W = window;
+
+  var /** TrustedTypePolicy */ policy;
 
   const /** !Object */ g =
   { "abstract2dom": 
@@ -64,12 +67,18 @@
         break;
       default:
         parent = newel(/** @type{string} */(name));
+	let /** boolean|null */ policyparam
+	 = policy && parent.tagName === "SCRIPT";
         for (name of O.keys(vdom).splice(vdom.length))
           switch (name[0])
           { default:
-              let /** string */ val = /** @type{Object} */(vdom)[name];
+              let /** string|TrustedScriptURL */ val
+	       = /** @type{Object} */(vdom)[name];
               if (val != null && typeof val !== "object")
+              { if (policyparam && name === "src")
+		  val = policy.createScriptURL(val);
                 parent.setAttribute(name, val);
+	      }
             case "_":case undefined:;
           }
     }
@@ -78,26 +87,31 @@
     while ((child = vdom[i++]) !== undefined)
       parent.appendChild(child[""] ? abstract2dom(child)
        : !child.indexOf || child.indexOf("&") < 0 ? D.createTextNode(child)
-       : (txta.innerHTML = child, txta.firstChild));
+       : (txta.innerHTML = policy ? policy.createHTML(child) : child,
+	  txta.firstChild));
     return parent;
   }
 
+  const /** string */ rxs = "remixml";
+
+  function /** string */ retit(/** string */ s) { return s; }
+
   function /** !Object */ factory(/** !Object */ rxml)
   { O.assign(rxml, g);
+    var ttypes = W.trustedTypes;
+    if (ttypes)
+      policy = ttypes.createPolicy(rxs,
+        { createHTML: retit, createScriptURL: retit });
     return g;
   }
-
-  const /** string */ rxs = "remixml";
 
   if (typeof define == "function" && define["amd"])
     define("remixml-dom", [rxs], factory);
   else if (typeof exports == "object")
     O.assign(/** @type{!Object} */(exports),
      factory(require(rxs)));
-  else {
-    var W = window;
+  else
     W["RemixmlDOM"] = factory(W["Remixml"]);
-  }
 
 // Cut BEGIN delete
 }).call(this);

@@ -14,6 +14,10 @@ it allows the creation of arbitrary DOM structures.
 
 It runs inside any webbrowser environment.
 
+If the browser enforces trusted-types, add the `remixml` policy;
+e.g. through an HTTP header like:
+`Content-Security-Policy: trusted-types remixml;`
+
 ## Reference documentation
 
 - `Remixmldom.abstract2dom(abstract, node?)`<br />
