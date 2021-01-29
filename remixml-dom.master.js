@@ -74,8 +74,10 @@
           { default:
               let /** string|TrustedScriptURL */ val
 	       = /** @type{Object} */(vdom)[name];
-              if (val != null && typeof val !== "object")
-              { if (policyparam && name === "src")
+              if (val != null)
+	      { if (val[""])
+		  val = val.join("");
+                if (policyparam && name === "src")
 		  val = policy.createScriptURL(val);
                 parent.setAttribute(name, val);
 	      }
