@@ -82,13 +82,25 @@
             case "_":case undefined:;
           }
     }
-    var /** !Array|string */ child;
+    var /** !Array|string|number */ child;
     var /** number */ i = 0;
     while ((child = vdom[i++]) !== undefined)
-      parent.appendChild(child[""] ? abstract2dom(child)
-       : !child.indexOf || child.indexOf("&") < 0 ? D.createTextNode(child)
-       : (txta.innerHTML = policy ? policy.createHTML(child) : child,
-	  txta.firstChild));
+    { let /** Node */ node;
+      if (child[""])
+	node = abstract2dom(child);
+      else
+      { var /** !Array|string */ nextchild;
+	child = /** @type {number} */(child) + "";	// Cast to string
+	// Concatenate strings first
+	while((nextchild = vdom[i]) !== undefined && !nextchild[""])
+          i++, child += nextchild;
+	node = child.indexOf("&") < 0
+	       ? D.createTextNode(child)
+               : (txta.innerHTML = policy ? policy.createHTML(child) : child,
+	          txta.firstChild);
+      }
+      parent.appendChild(node);
+    }
     return parent;
   }
 
