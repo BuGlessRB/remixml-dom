@@ -36,13 +36,6 @@
       }
   };
 
-  if (!O.assign)
-    O.defineProperty(O, "assign",
-    { "value": function(d, s, i)
-      { if (s) for (i in s) d[i] = s[i]; return d;
-      }
-    });
-
   function /** !Node */ newel(/** string */ n)
   { return D.createElement(n);
   }
