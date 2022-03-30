@@ -9,7 +9,7 @@
 /** @define {number} */ var VERBOSE = 0;
 
 // Cut BEGIN delete
-(function()
+(() =>
 { "use strict";
 // Cut END delete
 
