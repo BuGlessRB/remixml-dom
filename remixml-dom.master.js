@@ -28,7 +28,7 @@
 
   const /** !Object */ g =
   { "abstract2dom": 
-      function /** !Node */(/** !Array */ tpl, /** !Node= */ node)
+      /** !Node */(/** !Array */ tpl, /** !Node= */ node) =>
       { var /** !Node */ newnodes = abstract2dom(tpl);
         if (node)
           node.appendChild(newnodes), newnodes = node;
@@ -65,13 +65,13 @@
         for (name of O.keys(vdom).splice(vdom.length))
           switch (name[0])
           { default:
-              let /** string|TrustedScriptURL */ val
+              let /** string|Array|TrustedScriptURL */ val
 	       = /** @type{Object} */(vdom)[name];
               if (val != null)
 	      { if (val[""])
 		  val = val.join("");
                 if (policyparam && name === "src")
-		  val = policy.createScriptURL(val);
+		  val = policy.createScriptURL(/** @type {string} */(val));
                 parent.setAttribute(name, val);
 	      }
             case "_":case undefined:;
